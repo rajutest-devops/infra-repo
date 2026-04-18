@@ -1,0 +1,5 @@
+aws_region      = "ap-south-1"
+app_name        = "myapp"
+github_org      = "YOUR_GITHUB_USERNAME"
+app_repo_name   = "app-repo"
+infra_repo_name = "infra-repo"
