@@ -87,3 +87,15 @@ output "ecs_cluster_name" {
 output "ecs_service_name" {
   value = module.ecs.service_name
 }
+
+resource "aws_sns_topic" "alerts" {
+  name = "${var.app_name}-staging-alerts"
+  tags = {
+    Environment = "staging"
+    Purpose     = "pipeline-test"
+  }
+}
+
+output "sns_topic_arn" {
+  value = aws_sns_topic.alerts.arn
+}
