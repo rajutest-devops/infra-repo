@@ -57,28 +57,28 @@ module "ecs" {
 }
 
 module "iam_oidc" {
-  source          = "../../modules/iam-oidc"
-  app_name        = var.app_name
-  environment     = "staging"
-  github_org      = var.github_org
-  github_repo     = var.app_repo_name
-  infra_repo      = var.infra_repo_name
+  source      = "../../modules/iam-oidc"
+  app_name    = var.app_name
+  environment = "staging"
+  github_org  = var.github_org
+  github_repo = var.app_repo_name
+  infra_repo  = var.infra_repo_name
 }
 
 output "alb_url" {
-  value = "http://${module.ecs.alb_dns_name}"
+  value       = "http://${module.ecs.alb_dns_name}"
   description = "Your live site URL"
 }
 output "ecr_repository_url" {
-  value = module.ecr.repository_url
+  value       = module.ecr.repository_url
   description = "Push Docker images here"
 }
 output "github_actions_role_arn" {
-  value = module.iam_oidc.github_actions_role_arn
+  value       = module.iam_oidc.github_actions_role_arn
   description = "Use this in AWS_ROLE_ARN GitHub secret"
 }
 output "terraform_role_arn" {
-  value = module.iam_oidc.terraform_role_arn
+  value       = module.iam_oidc.terraform_role_arn
   description = "Use this in infra-repo GitHub secret"
 }
 output "ecs_cluster_name" {
